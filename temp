@@ -1,0 +1,17 @@
+.data
+var0:   .asciiz "Hello"
+var1:   .asciiz "World"
+
+.text
+.globl main
+
+main:	jal perm
+	li $v0, 10
+	syscall
+
+perm:	la $t0, var0
+	la $t1, var1
+	move $t2,$t0
+	move $t2,$t1
+	move $t1,$t0
+	jr $ra

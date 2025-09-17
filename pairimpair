@@ -1,0 +1,25 @@
+.data
+pr : 	.asciiz "C'est pair"
+impr : 	.asciiz "C'est impair"
+
+.text
+main :	li $v0, 5
+	syscall
+	move $t0, $v0
+
+	li $t1, 2
+	rem $t2, $t0, $t1
+
+	beq $t2, $zero, pair
+
+	li $v0, 4
+	la $a0, impair
+	syscall
+	j end
+
+pair :	li $v0, 4
+	la $a0, pair
+	syscall
+
+end:	li $v0, 10
+	syscall
